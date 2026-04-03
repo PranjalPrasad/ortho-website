@@ -1,0 +1,88 @@
+<!-- ============================================================
+  components/header/header.html
+  Include this in EVERY page using JS injection (see header.js)
+  ============================================================ -->
+<header class="site-header" id="siteHeader">
+  <!-- Top utility bar -->
+  <div class="header-topbar">
+    <div class="container">
+      <div class="topbar-left">
+        <a href="tel:+912012345678" class="topbar-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          +91 20 1234 5678
+        </a>
+        <a href="mailto:info@orthocare.in" class="topbar-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          info@orthocare.in
+        </a>
+      </div>
+      <div class="topbar-right">
+        <span class="topbar-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Pune, Maharashtra
+        </span>
+        <span class="topbar-item">Mon – Sat: 9:00am – 7:00pm</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main navigation -->
+  <nav class="header-nav">
+    <div class="container nav-inner">
+      <!-- Logo -->
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" rx="10" fill="#1A6FA8"/>
+            <path d="M20 8v24M8 20h24" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="20" cy="20" r="5" fill="#F4A832"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">OrthoCare</span>
+          <span class="logo-tagline">Orthopaedic Specialists</span>
+        </div>
+      </a>
+
+      <!-- Nav links -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#home" class="nav-link">Home</a></li>
+        <li><a href="index.html#about" class="nav-link">About Us</a></li>
+        <li class="nav-dropdown">
+          <a href="index.html#services" class="nav-link">Services <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg></a>
+          <ul class="dropdown-menu">
+            <li><a href="index.html#services">Joint Replacement</a></li>
+            <li><a href="index.html#services">Spine Surgery</a></li>
+            <li><a href="index.html#services">Sports Medicine</a></li>
+            <li><a href="index.html#services">Fracture Care</a></li>
+            <li><a href="index.html#services">Physiotherapy</a></li>
+            <li><a href="index.html#services">Arthroscopy</a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <a href="index.html#other-services" class="nav-link">Other Services <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg></a>
+          <ul class="dropdown-menu">
+            <li><a href="index.html#other-services">Diagnostic Imaging</a></li>
+            <li><a href="index.html#other-services">Orthotics & Prosthetics</a></li>
+            <li><a href="index.html#other-services">Pain Management</a></li>
+            <li><a href="index.html#other-services">Rehabilitation</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#branches" class="nav-link">Branches</a></li>
+        <li><a href="index.html#gallery" class="nav-link">Gallery</a></li>
+        <li><a href="index.html#location" class="nav-link">Location</a></li>
+      </ul>
+
+      <!-- CTA -->
+      <button class="btn btn-primary nav-cta" id="bookApptBtn" onclick="OrthoApp.openAppointmentModal()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+        Book Appointment
+      </button>
+
+      <!-- Hamburger -->
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>

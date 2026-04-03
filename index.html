@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OrthoCare — Orthopaedic Specialists, Pune</title>
+  <meta name="description" content="Leading orthopaedic care in Pune. Joint replacement, spine surgery, sports medicine, physiotherapy and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --blue:#1A6FA8;--blue-dark:#145A8A;--gold:#F4A832;
+      --dark:#0E1C2F;--light:#F5F8FC;--white:#fff;
+      --muted:#6B7A90;--border:#D8E3EE;
+      --fh:'Lora';
+      --fb:'Lora';
+      --sh:0 2px 8px rgba(14,28,47,.08);
+      --sm:0 8px 28px rgba(14,28,47,.13);
+      --sl:0 20px 60px rgba(14,28,47,.2);
+    }
+    html{scroll-behavior:smooth;font-size:18px}
+    body{font-family:var(--fb);color:var(--dark);background:var(--white);line-height:1.6;padding-top:92px}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;object-fit:cover}
+    ul{list-style:none}
+    .container{max-width:1180px;margin:0 auto;padding:0 22px}
+    /* each section reduced by 30px height => padding: 45px 0 (was 60px) */
+    .sec{padding:45px 0}
+    .sec--alt{background:var(--light)}
+    h1,h2,h3,h4{font-family:var(--fh);line-height:1.22}
+    .tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+    .sec-title{font-size:clamp(1.5rem,2.8vw,2.1rem);margin-bottom:10px;color:var(--dark)}
+    .sec-sub{font-size:.88rem;color:var(--muted);max-width:520px;margin-bottom:32px;line-height:1.7}
+    .btn{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:6px;font-family:var(--fb);font-size:.85rem;font-weight:600;cursor:pointer;border:2px solid transparent;transition:all .25s ease;white-space:nowrap}
+    .btn-p{background:var(--blue);color:#fff;border-color:var(--blue)}
+    .btn-p:hover{background:var(--blue-dark);border-color:var(--blue-dark);transform:translateY(-2px);box-shadow:var(--sm)}
+    .btn-g{background:var(--gold);color:var(--dark);border-color:var(--gold)}
+    .btn-g:hover{background:#e09628;border-color:#e09628;transform:translateY(-2px);box-shadow:var(--sm)}
+    .btn-o{background:transparent;color:var(--blue);border-color:var(--blue)}
+    .btn-o:hover{background:var(--blue);color:#fff}
+    .btn-ow{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+    .btn-ow:hover{background:rgba(255,255,255,.12);color:#fff}
+
+    /* TOPBAR */
+    .topbar{background:var(--dark);color:rgba(255,255,255,.72);font-size:.72rem;padding:6px 0;position:fixed;top:0;left:0;right:0;z-index:1001}
+    .topbar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px}
+    .topbar-l,.topbar-r{display:flex;align-items:center;gap:16px}
+    .tb{display:flex;align-items:center;gap:5px;color:rgba(255,255,255,.65);transition:color .15s}
+    .tb:hover{color:var(--gold)}
+
+    /* HEADER */
+    .site-header{position:fixed;top:30px;left:0;right:0;z-index:1000;background:var(--white);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+    .site-header.scrolled{box-shadow:0 4px 24px rgba(14,28,47,.12)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;height:62px}
+    .nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+    .logo-box{width:38px;height:38px;background:var(--blue);border-radius:9px;display:flex;align-items:center;justify-content:center}
+    .logo-name{font-family:var(--fh);font-size:1.18rem;font-weight:700;color:var(--blue);line-height:1;display:block}
+    .logo-sub{font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);line-height:1;margin-top:2px;display:block}
+    .nav-links{display:flex;align-items:center;gap:2px;flex:1;justify-content:center}
+    .nl{display:flex;align-items:center;gap:3px;padding:7px 10px;font-size:.82rem;font-weight:500;color:var(--dark);border-radius:5px;transition:color .15s,background .15s;cursor:pointer;white-space:nowrap}
+    .nl:hover,.nl.active{color:var(--blue);background:var(--light)}
+    .nd{position:relative}
+    .dd{display:none;position:absolute;top:calc(100% + 6px);left:0;background:var(--white);border:1px solid var(--border);border-radius:9px;box-shadow:var(--sm);min-width:185px;padding:6px;z-index:200}
+    .dd a{display:block;padding:7px 12px;font-size:.8rem;color:var(--dark);border-radius:5px;transition:background .15s,color .15s}
+    .dd a:hover{background:var(--light);color:var(--blue)}
+    .nd:hover .dd{display:block}
+    .nav-cta{flex-shrink:0;font-size:.82rem;padding:9px 18px}
+    .hbg{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:5px}
+    .hbg span{display:block;width:22px;height:2px;background:var(--dark);border-radius:2px;transition:all .25s}
+    .hbg.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+    .hbg.open span:nth-child(2){opacity:0}
+    .hbg.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+    /* HERO */
+    .hero{position:relative;min-height:82vh;display:flex;align-items:center;overflow:hidden;background:var(--dark)}
+    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.32;pointer-events:none}
+    .hero-fallback{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1600&q=80');background-size:cover;background-position:center;opacity:.26}
+    .hero-ov{position:absolute;inset:0;background:linear-gradient(120deg,rgba(14,28,47,.9) 45%,rgba(26,111,168,.4) 100%)}
+    .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 400px;gap:50px;align-items:center;padding:60px 0 70px}
+    .hero-content{color:#fff}
+    .hero-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(244,168,50,.16);color:var(--gold);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 13px;border-radius:20px;border:1px solid rgba(244,168,50,.28);margin-bottom:16px}
+    .hero-title{font-size:clamp(1.9rem,3.8vw,3rem);color:#fff;margin-bottom:14px;line-height:1.18}
+    .hero-title em{color:var(--gold);font-style:normal}
+    .hero-sub{font-size:.93rem;color:rgba(255,255,255,.7);max-width:460px;margin-bottom:28px;line-height:1.72}
+    .hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+    .hero-stats{display:inline-flex;align-items:center;gap:22px;padding:14px 20px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);border-radius:10px;backdrop-filter:blur(8px)}
+    .hs-n{font-family:var(--fh);font-size:1.45rem;font-weight:700;color:var(--gold);line-height:1;display:block}
+    .hs-l{font-size:.66rem;color:rgba(255,255,255,.5);display:block}
+    .hs-d{width:1px;height:30px;background:rgba(255,255,255,.15)}
+    /* Hero right */
+    .hero-right{display:flex;flex-direction:column;gap:11px}
+    .h-img-main{border-radius:14px;overflow:hidden;height:215px;position:relative}
+    .h-img-main img{width:100%;height:100%}
+    .h-badge{position:absolute;bottom:11px;left:11px;background:rgba(14,28,47,.8);backdrop-filter:blur(8px);color:#fff;padding:5px 11px;border-radius:5px;font-size:.72rem;font-weight:600}
+    .h-float{position:absolute;top:11px;right:11px;background:#fff;border-radius:7px;padding:6px 10px;display:flex;align-items:center;gap:5px;font-size:.7rem;font-weight:700;color:var(--dark);box-shadow:var(--sm)}
+    .h-img-row{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+    .h-img-sm{border-radius:9px;overflow:hidden;height:115px}
+    .h-img-sm img{width:100%;height:100%}
+    .scroll-arr{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.38);animation:bop 2s infinite;z-index:3}
+    @keyframes bop{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-7px)}}
+
+    /* ABOUT */
+    .about-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:50px;align-items:center}
+    .about-img-wrap{position:relative}
+    .about-main-img{border-radius:14px;overflow:hidden;height:360px}
+    .about-main-img img{width:100%;height:100%}
+    .about-sm-img{position:absolute;bottom:-18px;right:-18px;width:155px;height:105px;border-radius:9px;overflow:hidden;border:3px solid var(--white);box-shadow:var(--sm)}
+    .about-sm-img img{width:100%;height:100%}
+    .about-badge{position:absolute;top:18px;left:-16px;background:var(--gold);color:var(--dark);border-radius:9px;padding:12px 15px;text-align:center;box-shadow:var(--sm)}
+    .abn{display:block;font-family:var(--fh);font-size:1.7rem;font-weight:700;line-height:1}
+    .abt{font-size:.63rem;font-weight:700;line-height:1.3}
+    .about-para{font-size:.86rem;color:var(--muted);line-height:1.75;margin-bottom:11px}
+    .pillars{display:flex;flex-direction:column;gap:9px;margin-top:18px}
+    .pillar{display:flex;align-items:flex-start;gap:11px;padding:10px 13px;background:var(--white);border-radius:8px;border:1px solid var(--border)}
+    .pic{font-size:1.25rem;flex-shrink:0;margin-top:1px}
+    .pillar strong{font-size:.8rem;color:var(--dark);display:block}
+    .pillar small{font-size:.72rem;color:var(--muted)}
+
+    /* SERVICES */
+    .sec-hdr{text-align:center}
+    .sec-hdr .sec-sub{margin:0 auto 28px}
+    .srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
+    .srv-card{border-radius:11px;overflow:hidden;border:1.5px solid var(--border);transition:all .28s}
+    .srv-card:hover{border-color:var(--blue);box-shadow:var(--sm);transform:translateY(-4px)}
+    .srv-img{height:145px;overflow:hidden}
+    .srv-img img{width:100%;height:100%;transition:transform .4s}
+    .srv-card:hover .srv-img img{transform:scale(1.06)}
+    .srv-body{padding:13px 15px}
+    .srv-body h3{font-family:var(--fh);font-size:.93rem;margin-bottom:5px;color:var(--dark)}
+    .srv-body p{font-size:.77rem;color:var(--muted);line-height:1.58;margin-bottom:9px}
+    .srv-link{background:none;border:none;font-size:.77rem;font-weight:600;color:var(--blue);cursor:pointer;padding:0}
+    .srv-link:hover{text-decoration:underline}
+
+    /* APPT BANNER */
+    .appt-ban{background:linear-gradient(130deg,var(--blue),var(--blue-dark))}
+    .appt-inner{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;padding:34px 0}
+    .appt-t{color:#fff}
+    .appt-t h2{font-family:var(--fh);font-size:1.65rem;color:#fff;margin-bottom:7px}
+    .appt-t p{color:rgba(255,255,255,.74);font-size:.86rem;margin-bottom:12px}
+    .appt-perks li{color:rgba(255,255,255,.78);font-size:.78rem;margin-bottom:4px}
+    .appt-a{display:flex;flex-direction:column;align-items:center;gap:9px;flex-shrink:0}
+    .ban-ph{color:rgba(255,255,255,.68);font-size:.78rem}
+    .ban-ph a{color:#fff;font-weight:600}
+
+    /* OTHER SERVICES */
+    .osrv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .osrv{display:flex;gap:11px;padding:14px;background:var(--white);border-radius:9px;border:1px solid var(--border);transition:box-shadow .22s}
+    .osrv:hover{box-shadow:var(--sm)}
+    .osrv-img{width:60px;height:60px;border-radius:7px;overflow:hidden;flex-shrink:0}
+    .osrv-img img{width:100%;height:100%}
+    .osrv h4{font-size:.83rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+    .osrv p{font-size:.74rem;color:var(--muted);line-height:1.55}
+
+    /* BRANCHES */
+    .br-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .br-card{border-radius:11px;overflow:hidden;border:1.5px solid var(--border);transition:all .22s;position:relative}
+    .br-card:hover{border-color:var(--blue);box-shadow:var(--sm)}
+    .br-main{border-color:var(--blue)}
+    .br-badge{position:absolute;top:9px;left:9px;background:var(--blue);color:#fff;font-size:.6rem;font-weight:700;padding:3px 9px;border-radius:12px;z-index:1}
+    .br-img{height:105px;overflow:hidden}
+    .br-img img{width:100%;height:100%;transition:transform .35s}
+    .br-card:hover .br-img img{transform:scale(1.06)}
+    .br-body{padding:12px 13px}
+    .br-body h3{font-family:var(--fh);font-size:.9rem;margin-bottom:5px;color:var(--dark)}
+    .br-body address{font-style:normal;font-size:.71rem;color:var(--muted);line-height:1.55;margin-bottom:7px}
+    .br-det{display:flex;align-items:center;gap:5px;font-size:.7rem;color:var(--muted);margin-bottom:3px}
+    .br-det a{color:var(--blue)}
+    .br-body .btn{margin-top:9px;width:100%;justify-content:center;font-size:.74rem;padding:7px 12px}
+
+    /* LOCATION */
+    .loc-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:38px;align-items:start}
+    .loc-grid iframe{border-radius:11px;display:block}
+    .loc-info h3{font-family:var(--fh);font-size:1.12rem;margin-bottom:14px}
+    .loc-det{margin-bottom:12px}
+    .loc-lbl{display:block;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:2px}
+    .loc-det p{font-size:.8rem;color:var(--muted);line-height:1.6}
+    .loc-det a{color:var(--blue);font-weight:600}
+
+    /* GALLERY */
+    .gf-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+    .gf{padding:6px 15px;border:2px solid var(--border);border-radius:18px;font-family:var(--fb);font-size:.76rem;font-weight:600;background:none;cursor:pointer;color:var(--muted);transition:all .16s}
+    .gf:hover,.gf.active{border-color:var(--blue);background:var(--blue);color:#fff}
+    .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:165px;gap:11px}
+    .gi{border-radius:9px;overflow:hidden;position:relative;cursor:pointer}
+    .gi--w{grid-column:span 2}
+    .gi--t{grid-row:span 2}
+    .gi img{width:100%;height:100%;transition:transform .4s}
+    .gi:hover img{transform:scale(1.07)}
+    .gi-ov{position:absolute;inset:0;background:rgba(14,28,47,.65);color:#fff;display:flex;align-items:flex-end;padding:11px 13px;font-size:.76rem;font-weight:600;opacity:0;transition:opacity .22s}
+    .gi:hover .gi-ov{opacity:1}
+
+    /* FOOTER */
+    .footer{background:var(--dark);color:rgba(255,255,255,.65)}
+    .footer-main{padding:38px 0 24px}
+    .f-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:36px}
+    .f-logo{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+    .f-logo .logo-name{color:#fff}
+    .f-logo .logo-sub{color:rgba(255,255,255,.38)}
+    .f-about{font-size:.8rem;color:rgba(255,255,255,.52);line-height:1.7;margin-bottom:16px;max-width:235px}
+    .f-socs{display:flex;gap:7px}
+    .f-soc{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:7px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.55);transition:background .16s,color .16s}
+    .f-soc:hover{background:var(--blue);color:#fff}
+    .f-ct{font-family:var(--fb);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:13px}
+    .f-links li{margin-bottom:7px}
+    .f-links a{font-size:.8rem;color:rgba(255,255,255,.52);transition:color .16s,padding-left .16s;display:inline-block}
+    .f-links a:hover{color:var(--gold);padding-left:4px}
+    .f-contact li{display:flex;align-items:flex-start;gap:7px;margin-bottom:9px;font-size:.78rem;color:rgba(255,255,255,.52)}
+    .f-contact svg{flex-shrink:0;margin-top:2px;color:var(--blue)}
+    .f-contact a{color:rgba(255,255,255,.52);transition:color .16s}
+    .f-contact a:hover{color:var(--gold)}
+    .f-appt{margin-top:12px;font-size:.76rem;padding:7px 14px}
+    .f-bot{border-top:1px solid rgba(255,255,255,.07);padding:14px 0}
+    .f-bot .container{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+    .f-bot p{font-size:.73rem;color:rgba(255,255,255,.32)}
+    .f-botl{display:flex;gap:14px}
+    .f-botl a{font-size:.73rem;color:rgba(255,255,255,.32);transition:color .16s}
+    .f-botl a:hover{color:rgba(255,255,255,.65)}
+
+    /* MODAL */
+    .modal-bd{display:none;position:fixed;inset:0;background:rgba(14,28,47,.76);z-index:9000;align-items:center;justify-content:center;backdrop-filter:blur(5px);animation:fi .2s}
+    .modal-bd.on{display:flex}
+    .modal-box{background:#fff;border-radius:13px;width:90%;max-width:595px;max-height:92vh;overflow-y:auto;box-shadow:var(--sl);animation:su .28s ease;position:relative}
+    .m-hdr{background:var(--blue);color:#fff;padding:20px 26px 16px;border-radius:13px 13px 0 0}
+    .m-hdr h2{font-family:var(--fh);font-size:1.3rem;color:#fff;margin-bottom:2px}
+    .m-hdr p{font-size:.78rem;opacity:.78}
+    .m-close{position:absolute;top:13px;right:15px;background:rgba(255,255,255,.17);border:none;color:#fff;width:30px;height:30px;border-radius:50%;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .16s}
+    .m-close:hover{background:rgba(255,255,255,.28)}
+    .m-body{padding:20px 26px 26px}
+    @keyframes fi{from{opacity:0}to{opacity:1}}
+    @keyframes su{from{transform:translateY(32px);opacity:0}to{transform:none;opacity:1}}
+    .asteps{display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+    .as{display:flex;align-items:center;gap:5px;font-size:.72rem;font-weight:600;color:var(--muted);white-space:nowrap}
+    .as span{display:flex;align-items:center;justify-content:center;width:23px;height:23px;border-radius:50%;background:var(--border);color:var(--muted);font-size:.68rem;font-weight:700;transition:all .22s}
+    .as.active{color:var(--blue)}
+    .as.active span{background:var(--blue);color:#fff}
+    .as.done{color:#27ae60}
+    .as.done span{background:#27ae60;color:#fff}
+    .asdiv{flex:1;height:2px;background:var(--border);margin:0 5px;min-width:14px}
+    .ap{display:none}
+    .ap.on{display:block}
+    .apt{font-family:var(--fh);font-size:1.05rem;color:var(--dark);margin-bottom:3px}
+    .aps{font-size:.78rem;color:var(--muted);margin-bottom:14px}
+    .sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:16px}
+    .sc input{display:none}
+    .sci{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 5px;border:2px solid var(--border);border-radius:7px;cursor:pointer;transition:all .2s;text-align:center}
+    .sci:hover{border-color:var(--blue);background:rgba(26,111,168,.04)}
+    .sc input:checked + .sci{border-color:var(--blue);background:rgba(26,111,168,.07);box-shadow:0 0 0 2px rgba(26,111,168,.14)}
+    .sic{font-size:1.3rem}
+    .snm{font-size:.7rem;font-weight:600;color:var(--dark);line-height:1.2}
+    .sdc{font-size:.62rem;color:var(--muted)}
+    .dlist{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+    .dc input{display:none}
+    .dci{display:flex;align-items:center;gap:10px;padding:10px 13px;border:2px solid var(--border);border-radius:7px;cursor:pointer;transition:all .2s}
+    .dci:hover{border-color:var(--blue);background:rgba(26,111,168,.03)}
+    .dc input:checked + .dci{border-color:var(--blue);background:rgba(26,111,168,.05)}
+    .dav{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--blue),#2980b9);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.76rem;flex-shrink:0}
+    .dname{font-weight:700;font-size:.85rem;color:var(--dark);display:block}
+    .dspec{font-size:.73rem;color:var(--blue);font-weight:500;display:block}
+    .dexp{font-size:.68rem;color:var(--muted)}
+    .dchk{color:var(--blue);opacity:0;transition:opacity .16s;flex-shrink:0}
+    .dc input:checked + .dci .dchk{opacity:1}
+    .dtrow{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+    .fg{display:flex;flex-direction:column;gap:4px;margin-bottom:11px}
+    .fl{font-size:.74rem;font-weight:600;color:var(--dark)}
+    .fi{padding:8px 11px;border:1.5px solid var(--border);border-radius:6px;font-family:var(--fb);font-size:.83rem;color:var(--dark);outline:none;width:100%;transition:border-color .16s,box-shadow .16s}
+    .fi:focus{border-color:var(--blue);box-shadow:0 0 0 2px rgba(26,111,168,.11)}
+    .tslots{display:flex;flex-wrap:wrap;gap:6px;margin-top:5px}
+    .ts{padding:5px 11px;border:2px solid var(--border);border-radius:5px;font-size:.72rem;font-weight:600;background:#fff;cursor:pointer;color:var(--dark);transition:all .16s}
+    .ts:hover:not(.un){border-color:var(--blue);color:var(--blue)}
+    .ts.sel{border-color:var(--blue);background:var(--blue);color:#fff}
+    .ts.un{background:var(--light);color:var(--muted);cursor:not-allowed;text-decoration:line-through}
+    .sleg{display:flex;align-items:center;gap:5px;font-size:.68rem;color:var(--muted);margin-top:7px}
+    .ld{width:8px;height:8px;border-radius:50%}
+    .ld.av{background:var(--blue)}
+    .ld.un{background:var(--muted)}
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+    .fta{resize:vertical;min-height:68px}
+    .anav{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+    .succ{text-align:center;padding:12px 0}
+    .succ .sib{font-size:3.3rem;margin-bottom:10px;display:block}
+    .succ h3{font-family:var(--fh);font-size:1.35rem;margin-bottom:7px}
+    .succ p{color:var(--muted);font-size:.83rem;margin-bottom:11px}
+    .sref{display:inline-block;padding:6px 16px;background:var(--light);border-radius:5px;font-size:.8rem;margin-bottom:16px}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      body{padding-top:86px}
+      .srv-grid{grid-template-columns:repeat(2,1fr)}
+      .osrv-grid{grid-template-columns:repeat(2,1fr)}
+      .br-grid{grid-template-columns:repeat(2,1fr)}
+      .hero-inner{grid-template-columns:1fr}
+      .hero-right{display:none}
+      .about-grid{grid-template-columns:1fr}
+      .about-img-wrap{max-width:440px;margin:0 auto}
+      .loc-grid{grid-template-columns:1fr}
+      .f-grid{grid-template-columns:1fr 1fr;gap:26px}
+    }
+    @media(max-width:900px){
+      .hbg{display:flex}
+      .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:10px 16px 16px;border-top:1px solid var(--border);box-shadow:var(--sm);align-items:flex-start;gap:1px;z-index:999}
+      .nav-links.open{display:flex}
+      .nav-wrap{position:relative}
+      .nav-cta{display:none}
+      .topbar-r{display:none}
+      .dd{position:static;box-shadow:none;border:none;padding-left:12px;border-radius:0}
+      .nd:hover .dd{display:none}
+      .nd.open .dd{display:block}
+    }
+    @media(max-width:700px){
+      .srv-grid,.osrv-grid,.br-grid{grid-template-columns:1fr}
+      .gal-grid{grid-template-columns:1fr 1fr;grid-auto-rows:130px}
+      .gi--w,.gi--t{grid-column:span 1;grid-row:span 1}
+      .appt-inner{flex-direction:column;text-align:center}
+      .appt-perks{align-items:center}
+      .appt-a{width:100%}
+      .f-grid{grid-template-columns:1fr}
+      .sgrid{grid-template-columns:repeat(2,1fr)}
+      .dtrow,.frow{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-l">
+      <a href="tel:+912012345678" class="tb">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        +91 20 1234 5678
+      </a>
+      <a href="mailto:info@orthocare.in" class="tb">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        info@orthocare.in
+      </a>
+    </div>
+    <div class="topbar-r">
+      <span class="tb"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Pune, Maharashtra</span>
+      <span class="tb">Mon – Sat: 9:00am – 7:00pm</span>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="container nav-wrap">
+    <a href="#home" class="nav-logo">
+      <div class="logo-box">
+        <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
+          <path d="M20 6v28M6 20h28" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="20" cy="20" r="6" fill="#F4A832"/>
+        </svg>
+      </div>
+      <div>
+        <span class="logo-name">OrthoCare</span>
+        <span class="logo-sub">Orthopaedic Specialists</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="nl active">Home</a></li>
+      <li><a href="#about" class="nl">About Us</a></li>
+      <li class="nd">
+        <a class="nl" href="#services">Services </a>
+      </li>
+      <li class="nd">
+        <a class="nl" href="#other-services">Other Services </a>
+      </li>
+      <li><a href="#branches" class="nl">Branches</a></li>
+      <li><a href="#gallery" class="nl">Gallery</a></li>
+      <li><a href="#location" class="nl">Location</a></li>
+    </ul>
+    <button class="btn btn-p nav-cta" onclick="openModal()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
+      Book Appointment
+    </button>
+    <button class="hbg" id="hbg" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="https://cdn.pixabay.com/video/2021/11/10/94826-646652404_large.mp4" type="video/mp4">
+  </video>
+  <div class="hero-fallback"></div>
+  <div class="hero-ov"></div>
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Pune's #1 Orthopaedic Centre
+      </div>
+      <h1 class="hero-title">Advanced Bone &amp;<br>Joint Care, <em>Closer to You</em></h1>
+      <p class="hero-sub">From sports injuries to complex joint replacements — our fellowship-trained specialists deliver world-class orthopaedic treatment with compassion and precision.</p>
+      <div class="hero-btns">
+        <button class="btn btn-g" onclick="openModal()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+          Book Appointment
+        </button>
+        <a href="#services" class="btn btn-ow">Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div><span class="hs-n">15K+</span><span class="hs-l">Patients Treated</span></div>
+        <div class="hs-d"></div>
+        <div><span class="hs-n">18+</span><span class="hs-l">Years Experience</span></div>
+        <div class="hs-d"></div>
+        <div><span class="hs-n">4</span><span class="hs-l">Pune Branches</span></div>
+        <div class="hs-d"></div>
+        <div><span class="hs-n">4.9&#9733;</span><span class="hs-l">Patient Rating</span></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="h-img-main">
+        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&q=80" alt="Doctor consultation" loading="lazy">
+        <div class="h-badge">NABH Accredited</div>
+        <div class="h-float">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#27ae60"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          ISO Certified
+        </div>
+      </div>
+      <div class="h-img-row">
+        <div class="h-img-sm"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80" alt="Surgery" loading="lazy"></div>
+        <div class="h-img-sm"><img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&q=80" alt="Physiotherapy" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+  <a href="#about" class="scroll-arr">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </a>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec sec--alt">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <div class="about-main-img">
+          <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=700&q=80" alt="OrthoCare Clinic" loading="lazy">
+        </div>
+        <div class="about-sm-img">
+          <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=300&q=80" alt="Lab" loading="lazy">
+        </div>
+        <div class="about-badge">
+          <span class="abn">18+</span>
+          <span class="abt">Years of<br>Excellence</span>
+        </div>
+      </div>
+      <div>
+        <span class="tag">About Us</span>
+        <h2 class="sec-title">Pune's Most Trusted Orthopaedic Specialists</h2>
+        <p class="about-para">At OrthoCare, we combine decades of surgical expertise with the latest technology to deliver outcomes that restore mobility, reduce pain, and transform lives. Our fellowship-trained surgeons, physiotherapists, and specialists provide holistic musculoskeletal care.</p>
+        <p class="about-para">Founded in 2006, we've grown from one clinic on FC Road to four branches across Pune, serving 15,000+ patients annually. NABH-accredited and ISO-certified.</p>
+        <div class="pillars">
+          <div class="pillar"><div class="pic">&#127919;</div><div><strong>Precision Diagnosis</strong><br><small>Digital X-Ray, MRI &amp; CT-guided planning</small></div></div>
+          <div class="pillar"><div class="pic">&#129309;</div><div><strong>Patient-First Care</strong><br><small>Personalised treatment plans for every patient</small></div></div>
+          <div class="pillar"><div class="pic">&#129302;</div><div><strong>Advanced Technology</strong><br><small>Robotic-assisted surgery &amp; minimally invasive techniques</small></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="sec">
+  <div class="container">
+    <div class="sec-hdr">
+      <span class="tag">What We Treat</span>
+      <h2 class="sec-title">Our Core Orthopaedic Services</h2>
+      <p class="sec-sub">World-class surgical and non-surgical care for every orthopaedic condition</p>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card">
+        <div class="srv-img"><img src="/img/joint replacement.jpeg" alt="Joint Replacement" loading="lazy"></div>
+        <div class="srv-body"><h3>Joint Replacement</h3><p>Total &amp; partial hip, knee &amp; shoulder replacement with advanced implants for lasting mobility.</p><button class="srv-link" onclick="openModal()">Book Consultation &#8594;</button></div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-img"><img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=500&q=80" alt="Spine Surgery" loading="lazy"></div>
+        <div class="srv-body"><h3>Spine Surgery</h3><p>Minimally invasive procedures for disc herniation, scoliosis &amp; degenerative spine conditions.</p><button class="srv-link" onclick="openModal()">Book Consultation &#8594;</button></div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-img"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80" alt="Sports Medicine" loading="lazy"></div>
+        <div class="srv-body"><h3>Sports Medicine</h3><p>Expert management of ligament tears, muscle strains, cartilage damage &amp; overuse injuries.</p><button class="srv-link" onclick="openModal()">Book Consultation &#8594;</button></div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-img"><img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=500&q=80" alt="Fracture Care" loading="lazy"></div>
+        <div class="srv-body"><h3>Fracture Care</h3><p>Emergency and elective fracture treatment with modern fixation for optimal recovery.</p><button class="srv-link" onclick="openModal()">Book Consultation &#8594;</button></div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-img"><img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=500&q=80" alt="Arthroscopy" loading="lazy"></div>
+        <div class="srv-body"><h3>Arthroscopy</h3><p>Keyhole surgical procedures for knee, shoulder &amp; hip with minimal scarring &amp; faster recovery.</p><button class="srv-link" onclick="openModal()">Book Consultation &#8594;</button></div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-img"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&q=80" alt="Physiotherapy" loading="lazy"></div>
+        <div class="srv-body"><h3>Physiotherapy</h3><p>Customised rehabilitation programs by certified physiotherapists for post-surgery &amp; injury recovery.</p><button class="srv-link" onclick="openModal()">Book Consultation &#8594;</button></div>
+      </div>
+    </div>
+    <div style="text-align:center"><button class="btn btn-p" onclick="openModal()">Book an Appointment</button></div>
+  </div>
+</section>
+
+<!-- APPT BANNER -->
+<section id="appointment" class="appt-ban">
+  <div class="container">
+    <div class="appt-inner">
+      <div class="appt-t">
+        <h2>Ready to Get Back on Your Feet?</h2>
+        <p>Book in under 2 minutes. Our team confirms within 30 minutes.</p>
+        <ul class="appt-perks">
+          <li>&#10003; Same-day appointments available</li>
+          <li>&#10003; All major insurance accepted</li>
+          <li>&#10003; WhatsApp confirmation sent instantly</li>
+        </ul>
+      </div>
+      <div class="appt-a">
+        <button class="btn btn-g" style="padding:12px 30px;font-size:.92rem" onclick="openModal()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+          Book an Appointment
+        </button>
+        <p class="ban-ph">Or call: <a href="tel:+912012345678">+91 20 1234 5678</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OTHER SERVICES -->
+<section id="other-services" class="sec sec--alt">
+  <div class="container">
+    <span class="tag">Beyond Surgery</span>
+    <h2 class="sec-title">Other Services We Offer</h2>
+    <p class="sec-sub">Comprehensive support services for complete orthopaedic care</p>
+    <div class="osrv-grid">
+      <div class="osrv">
+        <div class="osrv-img"><img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=200&q=80" alt="Imaging" loading="lazy"></div>
+        <div><h4>Diagnostic Imaging</h4><p>In-house digital X-Ray, ultrasound &amp; MRI for accurate diagnosis.</p></div>
+      </div>
+      <div class="osrv">
+        <div class="osrv-img"><img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=200&q=80" alt="Orthotics" loading="lazy"></div>
+        <div><h4>Orthotics &amp; Prosthetics</h4><p>Custom braces, splints &amp; prosthetic limbs for improved function.</p></div>
+      </div>
+      <div class="osrv">
+        <div class="osrv-img"><img src="https://images.unsplash.com/photo-1587370560942-ad2a04eabb6d?w=200&q=80" alt="Pain Management" loading="lazy"></div>
+        <div><h4>Pain Management</h4><p>PRP therapy, injections &amp; nerve blocks for orthopaedic pain.</p></div>
+      </div>
+      <div class="osrv">
+        <div class="osrv-img"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=200&q=80" alt="Rehabilitation" loading="lazy"></div>
+        <div><h4>Rehabilitation Centre</h4><p>Fully equipped gym with hydrotherapy &amp; electrotherapy.</p></div>
+      </div>
+      <div class="osrv">
+        <div class="osrv-img"><img src="https://images.unsplash.com/photo-1579165466949-3180a3d056d5?w=200&q=80" alt="Bone Density" loading="lazy"></div>
+        <div><h4>Bone Density Testing</h4><p>DEXA scan for osteoporosis screening to prevent fractures.</p></div>
+      </div>
+      <div class="osrv">
+        <div class="osrv-img"><img src="https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=200&q=80" alt="Second Opinion" loading="lazy"></div>
+        <div><h4>Second Opinion</h4><p>Expert review of diagnosis &amp; treatment plans by senior consultants.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANCHES -->
+<section id="branches" class="sec">
+  <div class="container">
+    <span class="tag">Find Us Near You</span>
+    <h2 class="sec-title">Our Branches in Pune</h2>
+    <p class="sec-sub">Convenient locations across the city for easy access to quality orthopaedic care</p>
+    <div class="br-grid">
+      <div class="br-card br-main">
+        <div class="br-badge">Main Centre</div>
+        <div class="br-img"><img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=400&q=80" alt="FC Road" loading="lazy"></div>
+        <div class="br-body">
+          <h3>FC Road, Pune</h3>
+          <address>123, Ortho Tower, FC Road, Shivajinagar, Pune 411004</address>
+          <div class="br-det"><svg width="11" height="11" viewBox="0 0 24 24" fill="var(--blue)"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg><a href="tel:+912012345678">+91 20 1234 5678</a></div>
+          <div class="br-det"><svg width="11" height="11" viewBox="0 0 24 24" fill="var(--blue)"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg> Mon-Sat 9am-7pm</div>
+          <button class="btn btn-p" onclick="openModal()">Book Here</button>
+        </div>
+      </div>
+      <div class="br-card">
+        <div class="br-img"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&q=80" alt="Aundh" loading="lazy"></div>
+        <div class="br-body">
+          <h3>Aundh</h3>
+          <address>45, Sai Complex, ITI Road, Aundh, Pune 411007</address>
+          <div class="br-det"><svg width="11" height="11" viewBox="0 0 24 24" fill="var(--blue)"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg><a href="tel:+912087654321">+91 20 8765 4321</a></div>
+          <div class="br-det"><svg width="11" height="11" viewBox="0 0 24 24" fill="var(--blue)"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg> Mon-Sat 10am-6pm</div>
+          <button class="btn btn-o" onclick="openModal()">Book Here</button>
+        </div>
+      </div>
+      <div class="br-card">
+        <div class="br-img"><img src="/img/clinic.webp" alt="Kothrud" loading="lazy"></div>
+        <div class="br-body">
+          <h3>Kothrud</h3>
+          <address>78, Goodluck Society, Paud Road, Kothrud, Pune 411038</address>
+          <div class="br-det"><svg width="11" height="11" viewBox="0 0 24 24" fill="var(--blue)"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg><a href="tel:+912056781234">+91 20 5678 1234</a></div>
+          <div class="br-det"><svg width="11" height="11" viewBox="0 0 24 24" fill="var(--blue)"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg> Mon-Sat 9:30am-6:30pm</div>
+          <button class="btn btn-o" onclick="openModal()">Book Here</button>
+        </div>
+      </div>
+      <div class="br-card">
+        <div class="br-img"><img src="https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=400&q=80" alt="Hadapsar" loading="lazy"></div>
+        <div class="br-body">
+          <h3>Hadapsar</h3>
+          <address>201, Rainbow Plaza, Magarpatta Road, Hadapsar, Pune 411028</address>
+          <div class="br-det"><svg width="11" height="11" viewBox="0 0 24 24" fill="var(--blue)"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg><a href="tel:+912043218765">+91 20 4321 8765</a></div>
+          <div class="br-det"><svg width="11" height="11" viewBox="0 0 24 24" fill="var(--blue)"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg> Mon-Sat 9am-7pm</div>
+          <button class="btn btn-o" onclick="openModal()">Book Here</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location" class="sec sec--alt">
+  <div class="container">
+    <span class="tag">Get Directions</span>
+    <h2 class="sec-title">Find Our Main Centre</h2>
+    <p class="sec-sub">123, Ortho Tower, FC Road, Shivajinagar, Pune 411004</p>
+    <div class="loc-grid">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.2605743882!2d73.8466527!3d18.5196148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c01abb1a63c1%3A0x8c4b80b44cf52b73!2sFC%20Rd%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000"
+        width="100%" height="360" style="border:0;border-radius:11px;" allowfullscreen loading="lazy" title="Map"></iframe>
+      <div class="loc-info">
+        <h3>OrthoCare Main Centre</h3>
+        <div class="loc-det"><span class="loc-lbl">&#128205; Address</span><p>123, Ortho Tower, Fergusson College Road, Shivajinagar, Pune 411004</p></div>
+        <div class="loc-det"><span class="loc-lbl">&#128222; Phone</span><p><a href="tel:+912012345678">+91 20 1234 5678</a></p></div>
+        <div class="loc-det"><span class="loc-lbl">&#128231; Email</span><p><a href="mailto:info@orthocare.in">info@orthocare.in</a></p></div>
+        <div class="loc-det"><span class="loc-lbl">&#128336; Hours</span><p>Mon-Sat: 9:00am-7:00pm<br>Sunday: Closed (Emergencies: call)</p></div>
+        <div class="loc-det"><span class="loc-lbl">&#128647; Nearest</span><p>Shivajinagar Bus Stand - 5 min walk</p></div>
+        <a href="https://maps.google.com/?q=FC+Road+Pune" target="_blank" class="btn btn-p" style="margin-top:8px">Get Directions &#8599;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="sec">
+  <div class="container">
+    <span class="tag">Inside OrthoCare</span>
+    <h2 class="sec-title">Photos &amp; Gallery</h2>
+    <p class="sec-sub">A look at our state-of-the-art facilities and care environment</p>
+    <div class="gf-row">
+      <button class="gf active" data-f="all">All</button>
+      <button class="gf" data-f="facility">Facility</button>
+      <button class="gf" data-f="team">Team</button>
+      <button class="gf" data-f="equipment">Equipment</button>
+      <button class="gf" data-f="events">Events</button>
+    </div>
+    <div class="gal-grid" id="galGrid">
+      <div class="gi" data-c="facility"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80" alt="Reception" loading="lazy"><div class="gi-ov">Reception Area</div></div>
+      <div class="gi gi--w" data-c="facility"><img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&q=80" alt="Wards" loading="lazy"><div class="gi-ov">Patient Wards</div></div>
+      <div class="gi" data-c="equipment"><img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=500&q=80" alt="OT" loading="lazy"><div class="gi-ov">Operation Theatre</div></div>
+      <div class="gi" data-c="team"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=80" alt="Team" loading="lazy"><div class="gi-ov">Medical Team</div></div>
+      <div class="gi" data-c="equipment"><img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=500&q=80" alt="X-Ray" loading="lazy"><div class="gi-ov">Digital X-Ray Suite</div></div>
+      <div class="gi gi--t" data-c="facility"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&q=80" alt="Physio" loading="lazy"><div class="gi-ov">Physiotherapy Gym</div></div>
+      <div class="gi" data-c="events"><img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&q=80" alt="Camp" loading="lazy"><div class="gi-ov">Community Health Camp</div></div>
+      <div class="gi" data-c="team"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&q=80" alt="Consult" loading="lazy"><div class="gi-ov">Patient Consultation</div></div>
+      <div class="gi" data-c="equipment"><img src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=500&q=80" alt="Lab" loading="lazy"><div class="gi-ov">Diagnostic Laboratory</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-main">
+    <div class="container f-grid">
+      <div>
+        <a href="#home" class="f-logo">
+          <div class="logo-box"><svg width="20" height="20" viewBox="0 0 40 40" fill="none"><path d="M20 6v28M6 20h28" stroke="#fff" stroke-width="5" stroke-linecap="round"/><circle cx="20" cy="20" r="6" fill="#F4A832"/></svg></div>
+          <div><span class="logo-name">OrthoCare</span><span class="logo-sub">Orthopaedic Specialists</span></div>
+        </a>
+        <p class="f-about">Leading orthopaedic care in Pune. Advanced surgery with compassionate, personalised treatment for every patient.</p>
+      </div>
+      <div>
+        <p class="f-ct">Quick Links</p>
+        <ul class="f-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#other-services">Other Services</a></li>
+          <li><a href="#branches">Branches</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#location">Location</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="f-ct">Specialties</p>
+        <ul class="f-links">
+          <li><a href="#services">Joint Replacement</a></li>
+          <li><a href="#services">Spine Surgery</a></li>
+          <li><a href="#services">Sports Medicine</a></li>
+          <li><a href="#services">Fracture Care</a></li>
+          <li><a href="#services">Arthroscopy</a></li>
+          <li><a href="#services">Physiotherapy</a></li>
+          <li><a href="#services">Pain Management</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="f-ct">Contact Us</p>
+        <ul class="f-contact">
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span>123, Ortho Tower, FC Road, Pune 411004</span></li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg><a href="tel:+912012345678">+91 20 1234 5678</a></li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg><a href="mailto:info@orthocare.in">info@orthocare.in</a></li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg><span>Mon-Sat: 9:00am-7:00pm</span></li>
+        </ul>
+        <button class="btn btn-g f-appt" onclick="openModal()">Book Appointment</button>
+      </div>
+    </div>
+  </div>
+  <div class="f-bot">
+    <div class="container">
+      <p>&#169; <span id="yr"></span> OrthoCare Orthopaedic Specialists. All rights reserved.</p>
+      <div class="f-botl">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Developed by Kunash Media Solutions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- APPOINTMENT MODAL -->
+<div class="modal-bd" id="apptModal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="m-hdr">
+      <h2>&#128197; Book an Appointment</h2>
+      <p>OrthoCare Orthopaedic Specialists - Pune</p>
+      <button class="m-close" onclick="closeModal()">&#215;</button>
+    </div>
+    <div class="m-body">
+      <div class="asteps">
+        <div class="as active" data-s="1"><span>1</span> Service</div>
+        <div class="asdiv"></div>
+        <div class="as" data-s="2"><span>2</span> Doctor</div>
+        <div class="asdiv"></div>
+        <div class="as" data-s="3"><span>3</span> Schedule</div>
+        <div class="asdiv"></div>
+        <div class="as" data-s="4"><span>4</span> Details</div>
+      </div>
+      <!-- Step 1 -->
+      <div class="ap on" id="step1">
+        <h3 class="apt">Select a Service</h3><p class="aps">Choose the orthopaedic service you need</p>
+        <div class="sgrid">
+          <label class="sc"><input type="radio" name="srv" value="joint"><div class="sci"><span class="sic">&#129460;</span><span class="snm">Joint Replacement</span><span class="sdc">Hip, knee &amp; shoulder</span></div></label>
+          <label class="sc"><input type="radio" name="srv" value="spine"><div class="sci"><span class="sic">&#128302;</span><span class="snm">Spine Surgery</span><span class="sdc">Disc &amp; scoliosis</span></div></label>
+          <label class="sc"><input type="radio" name="srv" value="sports"><div class="sci"><span class="sic">&#9917;</span><span class="snm">Sports Medicine</span><span class="sdc">Injury &amp; rehab</span></div></label>
+          <label class="sc"><input type="radio" name="srv" value="fracture"><div class="sci"><span class="sic">&#129657;</span><span class="snm">Fracture Care</span><span class="sdc">Emergency &amp; complex</span></div></label>
+          <label class="sc"><input type="radio" name="srv" value="arthro"><div class="sci"><span class="sic">&#128301;</span><span class="snm">Arthroscopy</span><span class="sdc">Minimally invasive</span></div></label>
+          <label class="sc"><input type="radio" name="srv" value="physio"><div class="sci"><span class="sic">&#128170;</span><span class="snm">Physiotherapy</span><span class="sdc">Rehab &amp; recovery</span></div></label>
+          <label class="sc"><input type="radio" name="srv" value="pain"><div class="sci"><span class="sic">&#128138;</span><span class="snm">Pain Management</span><span class="sdc">Chronic &amp; acute</span></div></label>
+          <label class="sc"><input type="radio" name="srv" value="consult"><div class="sci"><span class="sic">&#128104;&#8205;&#9877;&#65039;</span><span class="snm">Consultation</span><span class="sdc">Initial assessment</span></div></label>
+        </div>
+        <div class="anav"><span></span><button class="btn btn-p" onclick="nextS(1)">Next &#8594;</button></div>
+      </div>
+      <!-- Step 2 -->
+      <div class="ap" id="step2">
+        <h3 class="apt">Choose a Doctor</h3><p class="aps">Select your preferred specialist</p>
+        <div class="dlist">
+          <label class="dc"><input type="radio" name="doc" value="sharma"><div class="dci"><div class="dav">DS</div><div><span class="dname">Dr. Rahul Sharma</span><span class="dspec">Joint Replacement &amp; Arthroscopy</span><span class="dexp">18 yrs &#183; MBBS, MS (Ortho)</span></div><svg class="dchk" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div></label>
+          <label class="dc"><input type="radio" name="doc" value="patel"><div class="dci"><div class="dav">AP</div><div><span class="dname">Dr. Anjali Patel</span><span class="dspec">Spine Surgery &amp; Pain Management</span><span class="dexp">14 yrs &#183; MBBS, DNB (Ortho)</span></div><svg class="dchk" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div></label>
+          <label class="dc"><input type="radio" name="doc" value="desai"><div class="dci"><div class="dav">VD</div><div><span class="dname">Dr. Vijay Desai</span><span class="dspec">Sports Medicine &amp; Physiotherapy</span><span class="dexp">10 yrs &#183; MBBS, MS, FISM</span></div><svg class="dchk" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div></label>
+        </div>
+        <div class="anav"><button class="btn btn-o" onclick="prevS(2)">&#8592; Back</button><button class="btn btn-p" onclick="nextS(2)">Next &#8594;</button></div>
+      </div>
+      <!-- Step 3 -->
+      <div class="ap" id="step3">
+        <h3 class="apt">Pick Date &amp; Time</h3><p class="aps">Choose a convenient slot</p>
+        <div class="dtrow">
+          <div class="fg"><label class="fl">Preferred Date</label><input type="date" class="fi" id="apptDate"></div>
+          <div class="fg"><label class="fl">Branch</label>
+            <select class="fi" id="apptBranch">
+              <option value="">Select branch</option>
+              <option>FC Road, Pune</option>
+              <option>Aundh Branch</option>
+              <option>Kothrud Branch</option>
+              <option>Hadapsar Branch</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg"><label class="fl">Available Slots</label>
+          <div class="tslots">
+            <button type="button" class="ts" data-t="9:00">9:00 AM</button>
+            <button type="button" class="ts" data-t="9:30">9:30 AM</button>
+            <button type="button" class="ts" data-t="10:00">10:00 AM</button>
+            <button type="button" class="ts" data-t="10:30">10:30 AM</button>
+            <button type="button" class="ts un" data-t="11:00">11:00 AM</button>
+            <button type="button" class="ts un" data-t="11:30">11:30 AM</button>
+            <button type="button" class="ts" data-t="14:00">2:00 PM</button>
+            <button type="button" class="ts" data-t="14:30">2:30 PM</button>
+            <button type="button" class="ts" data-t="15:00">3:00 PM</button>
+            <button type="button" class="ts" data-t="15:30">3:30 PM</button>
+            <button type="button" class="ts" data-t="16:00">4:00 PM</button>
+            <button type="button" class="ts" data-t="16:30">4:30 PM</button>
+          </div>
+          <p class="sleg"><span class="ld av"></span>Available &nbsp;<span class="ld un"></span>Booked</p>
+        </div>
+        <div class="anav"><button class="btn btn-o" onclick="prevS(3)">&#8592; Back</button><button class="btn btn-p" onclick="nextS(3)">Next &#8594;</button></div>
+      </div>
+      <!-- Step 4 -->
+      <div class="ap" id="step4">
+        <h3 class="apt">Your Details</h3><p class="aps">We'll send a confirmation to you</p>
+        <div class="frow">
+          <div class="fg"><label class="fl">Full Name *</label><input type="text" class="fi" id="apptName" placeholder="e.g. Ramesh Kulkarni"></div>
+          <div class="fg"><label class="fl">Mobile Number *</label><input type="tel" class="fi" id="apptPhone" placeholder="+91 98765 43210"></div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="apptEmail" placeholder="your@email.com"></div>
+          <div class="fg"><label class="fl">Age</label><input type="number" class="fi" id="apptAge" placeholder="e.g. 45"></div>
+        </div>
+        <div class="fg"><label class="fl">Describe your condition (optional)</label><textarea class="fi fta" id="apptNote" placeholder="Brief description..."></textarea></div>
+        <div class="anav"><button class="btn btn-o" onclick="prevS(4)">&#8592; Back</button><button class="btn btn-g" onclick="submitAppt()">&#10003; Confirm Booking</button></div>
+      </div>
+      <!-- Success -->
+      <div class="ap" id="stepOk">
+        <div class="succ">
+          <span class="sib">&#9989;</span>
+          <h3>Appointment Requested!</h3>
+          <p>We'll confirm via WhatsApp/SMS within 30 minutes.</p>
+          <div class="sref">Reference: <strong id="refNo"></strong></div><br>
+          <button class="btn btn-p" onclick="closeModal()">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Header scroll
+const hdr = document.getElementById('siteHeader');
+window.addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>40),{passive:true});
+
+// Hamburger
+const hbg = document.getElementById('hbg');
+const nav = document.getElementById('navLinks');
+hbg.addEventListener('click',()=>{hbg.classList.toggle('open');nav.classList.toggle('open')});
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-wrap')){hbg.classList.remove('open');nav.classList.remove('open')}});
+document.querySelectorAll('.nd .nl').forEach(a=>a.addEventListener('click',function(e){if(innerWidth<=900){e.preventDefault();this.closest('.nd').classList.toggle('open')}}));
+
+// Active nav
+const secs=document.querySelectorAll('section[id]');
+new IntersectionObserver(ens=>ens.forEach(en=>{if(en.isIntersecting){document.querySelectorAll('.nl').forEach(l=>l.classList.remove('active'));const a=document.querySelector('.nl[href="#'+en.target.id+'"]');if(a)a.classList.add('active')}}),{threshold:0.4}).observe&&secs.forEach(s=>new IntersectionObserver(ens=>ens.forEach(en=>{if(en.isIntersecting){document.querySelectorAll('.nl').forEach(l=>l.classList.remove('active'));const a=document.querySelector('.nl[href="#'+en.target.id+'"]');if(a)a.classList.add('active')}}),{threshold:0.4}).observe(s));
+
+// Smooth scroll
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[href^="#"]');
+  if(!a)return;
+  const t=document.getElementById(a.getAttribute('href').slice(1));
+  if(!t)return;
+  e.preventDefault();
+  window.scrollTo({top:t.getBoundingClientRect().top+scrollY-92,behavior:'smooth'});
+  hbg.classList.remove('open');nav.classList.remove('open');
+});
+
+// Gallery filter
+document.querySelectorAll('.gf').forEach(btn=>btn.addEventListener('click',function(){
+  document.querySelectorAll('.gf').forEach(b=>b.classList.remove('active'));
+  this.classList.add('active');
+  const f=this.dataset.f;
+  document.querySelectorAll('.gi').forEach(it=>{
+    const show=f==='all'||it.dataset.c===f;
+    it.style.display=show?'':'none';
+  });
+}));
+
+// Modal
+function openModal(){resetM();document.getElementById('apptModal').classList.add('on');document.body.style.overflow='hidden'}
+function closeModal(){document.getElementById('apptModal').classList.remove('on');document.body.style.overflow=''}
+document.getElementById('apptModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+let cs=1;
+function goStep(n){
+  cs=n;
+  document.querySelectorAll('.ap').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.as').forEach(s=>{const sn=+s.dataset.s;s.classList.toggle('active',sn===n);s.classList.toggle('done',sn<n)});
+  const p=document.getElementById(n==='ok'?'stepOk':'step'+n);
+  if(p)p.classList.add('on');
+  document.querySelector('.modal-box').scrollTop=0;
+}
+function nextS(n){
+  if(n===1&&!document.querySelector('input[name="srv"]:checked'))return alert('Please select a service.');
+  if(n===2&&!document.querySelector('input[name="doc"]:checked'))return alert('Please select a doctor.');
+  if(n===3){
+    if(!document.getElementById('apptDate').value)return alert('Please select a date.');
+    if(!document.getElementById('apptBranch').value)return alert('Please select a branch.');
+    if(!document.querySelector('.ts.sel'))return alert('Please select a time slot.');
+  }
+  goStep(n+1);
+}
+function prevS(n){goStep(n-1)}
+document.querySelectorAll('.ts:not(.un)').forEach(b=>b.addEventListener('click',function(){document.querySelectorAll('.ts').forEach(x=>x.classList.remove('sel'));this.classList.add('sel')}));
+function submitAppt(){
+  if(!document.getElementById('apptName').value.trim())return alert('Please enter your full name.');
+  if(!document.getElementById('apptPhone').value.trim())return alert('Please enter your mobile number.');
+  document.querySelectorAll('.ap').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.as').forEach(s=>s.classList.add('done'));
+  document.getElementById('stepOk').classList.add('on');
+  document.getElementById('refNo').textContent='OC-'+Math.floor(1e5+Math.random()*9e5);
+  document.querySelector('.modal-box').scrollTop=0;
+}
+function resetM(){
+  document.querySelectorAll('input[name="srv"],input[name="doc"]').forEach(r=>r.checked=false);
+  document.querySelectorAll('.ts').forEach(b=>b.classList.remove('sel'));
+  ['apptDate','apptBranch','apptName','apptPhone','apptEmail','apptAge','apptNote'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=''});
+  document.querySelectorAll('.as').forEach(s=>{s.classList.remove('active','done');if(+s.dataset.s===1)s.classList.add('active')});
+  document.querySelectorAll('.ap').forEach(p=>p.classList.remove('on'));
+  document.getElementById('step1').classList.add('on');
+  cs=1;
+}
+document.getElementById('apptDate').min=new Date().toISOString().split('T')[0];
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+// Scroll reveal
+const revEls=document.querySelectorAll('.srv-card,.osrv,.br-card,.pillar,.gi');
+const ro=new IntersectionObserver(ens=>ens.forEach((en,i)=>{if(en.isIntersecting){setTimeout(()=>{en.target.style.opacity='1';en.target.style.transform='none'},(i%4)*65);ro.unobserve(en.target)}}),{threshold:0.1});
+revEls.forEach(el=>{el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .45s ease, transform .45s ease';ro.observe(el)});
+</script>
+</body>
+</html>
